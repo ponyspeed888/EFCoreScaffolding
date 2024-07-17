@@ -1,0 +1,15 @@
+﻿dotnet new install . --force
+
+dotnet new list ponyspeed888-eftemplates
+
+dotnet new uninstall .
+
+
+dotnet new ponyspeed888-eftemplates
+
+
+dotnet new ponyspeed888-eftemplates --TemplateType mvvm --force
+
+
+
+dotnet ef dbcontext scaffold -o ModelsNorthWind --startup-project TemplateTestConsoleApp --project TemplateTestConsoleApp  "datasource=d:\MyDoc\DatabaseLatest\northwind.db" Microsoft.EntityFrameworkCore.Sqlite --force --no-build --data-annotations

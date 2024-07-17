@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34916.146
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreScaffolding", "EFCoreScaffolding\EFCoreScaffolding.csproj", "{A3BF9EA0-FC5A-438F-9A6D-2EC996F42DA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{F2FD5300-7908-4870-8F77-7E7FE296661F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{39EC518E-8F43-4C4D-953E-548ECC1DB259}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A3BF9EA0-FC5A-438F-9A6D-2EC996F42DA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3BF9EA0-FC5A-438F-9A6D-2EC996F42DA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3BF9EA0-FC5A-438F-9A6D-2EC996F42DA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3BF9EA0-FC5A-438F-9A6D-2EC996F42DA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2FD5300-7908-4870-8F77-7E7FE296661F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2FD5300-7908-4870-8F77-7E7FE296661F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2FD5300-7908-4870-8F77-7E7FE296661F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2FD5300-7908-4870-8F77-7E7FE296661F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0534CFAD-1B73-4E92-84A0-8AAA9C05FEA6}
+	EndGlobalSection
+EndGlobal
