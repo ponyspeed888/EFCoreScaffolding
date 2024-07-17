@@ -1,7 +1,16 @@
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fponyspeed888%2FEFTemplate&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 This project is a drop in replacement of Microsoft.EntityFrameworkCore.Templates.
 
 It contains multiple branches.
+
+How to use :
+
+For all branches except xxx :
+
+* Copy The folder CodeTemplates into you project
+* If you want Better template error detection at compile time, follow the instruction in install.txt
+* Run reverse engineering as usual to get your model
+
+
 
 
 The main branch :
