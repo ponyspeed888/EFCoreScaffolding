@@ -14,6 +14,11 @@
 
     // uncomment the following line to debug
     //System.Diagnostics.Debugger.Launch(); 
+    string StaticExtPropName = "ExtProp" ;
+    string DynamicExtPropName = "ExtPropDynamic" ;
+
+    string [] RequireConfigPropertyList = new string [] { StaticExtPropName, DynamicExtPropName } ;
+    string [] RequireConfigEntityList = new string [] { "Order", "OrderDetail" } ;
 
 
 #>

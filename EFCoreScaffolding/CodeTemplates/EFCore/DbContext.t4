@@ -183,6 +183,8 @@ public partial class <#= Options.ContextName #> : DbContext
         var firstProperty = true;
         foreach (var property in entityType.GetProperties())
         {
+            if ( RequireConfigPropertyList.Any(p => p == property.Name) )  continue ;
+
             var propertyFluentApiCalls = property.GetFluentApiCalls(annotationCodeGenerator)
                 ?.FilterChain(c => !(Options.UseDataAnnotations && c.IsHandledByDataAnnotations)
                     && !(c.Method == "IsRequired" && Options.UseNullableReferenceTypes && !property.ClrType.IsValueType));

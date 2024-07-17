@@ -65,12 +65,26 @@ namespace <#= NamespaceHint #>;
         }
     }
 #>
+
+
+<#
+    var bWantConfigProperty =  RequireConfigPropertyList.Any(p => EntityType.FindProperty(p) != null);
+    var bWantConfigEntity =  RequireConfigEntityList.Any(p => p == EntityType.Name);;
+    if ( bWantConfigProperty || bWantConfigEntity) 
+    {
+#>
+[EntityTypeConfiguration(typeof(<#= EntityType.Name #>Configuration))]
+<#  }#>
+
 public partial class <#= EntityType.Name #>
 {
 <#
     var firstProperty = true;
     foreach (var property in EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1))
     {
+        if ( RequireConfigPropertyList.Any(p => p == property.Name) ) continue ;
+
+
         if (!firstProperty)
         {
             WriteLine("");
