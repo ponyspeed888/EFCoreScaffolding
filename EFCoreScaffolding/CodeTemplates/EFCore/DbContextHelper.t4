@@ -13,4 +13,7 @@
         usings.Add(Options.ModelNamespace);
     }
 
+    var DbContextBaseClass = "DbContext" ;
+
+
 #>

@@ -64,7 +64,7 @@ namespace <#= NamespaceHint #>;
 [EntityTypeConfiguration(typeof(<#= EntityType.Name #>Configuration))]
 <#  }#>
 
-public partial class <#= EntityType.Name #>
+public partial class <#= EntityType.Name #> : <#= EntityBaseClass  #>
 {
 <#
     var firstProperty = true;

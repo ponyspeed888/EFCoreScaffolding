@@ -12,4 +12,7 @@
         usings.Add("Microsoft.EntityFrameworkCore");
     }
 
+    var EntityBaseClass = "object" ;
+
+
 #>
