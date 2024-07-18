@@ -15,6 +15,7 @@
 <#@ import namespace="Microsoft.EntityFrameworkCore.Scaffolding" #>
 <#@ import namespace="Microsoft.Extensions.DependencyInjection" #>
 <#@ include file="T4Helper.t4" #>
+<#@ include file="DbContextHelper.t4" #>
 <#
     if (!ProductInfo.GetVersion().StartsWith("8.0"))
     {
@@ -25,19 +26,6 @@
     var providerCode = services.GetRequiredService<IProviderConfigurationCodeGenerator>();
     var annotationCodeGenerator = services.GetRequiredService<IAnnotationCodeGenerator>();
     var code = services.GetRequiredService<ICSharpHelper>();
-
-    var usings = new List<string>
-    {
-        "System",
-        "System.Collections.Generic",
-        "Microsoft.EntityFrameworkCore"
-    };
-
-    if (NamespaceHint != Options.ModelNamespace
-        && !string.IsNullOrEmpty(Options.ModelNamespace))
-    {
-        usings.Add(Options.ModelNamespace);
-    }
 
     if (!string.IsNullOrEmpty(NamespaceHint))
     {

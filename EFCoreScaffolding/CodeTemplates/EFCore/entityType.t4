@@ -14,6 +14,7 @@
 <#@ import namespace="Microsoft.EntityFrameworkCore.Design" #>
 <#@ import namespace="Microsoft.Extensions.DependencyInjection" #>
 <#@ include file="T4Helper.t4" #>
+<#@ include file="entityTypeHelper.t4" #>
 <#
     if (EntityType.IsSimpleManyToManyJoinEntityType())
     {
@@ -24,19 +25,6 @@
     var services = (IServiceProvider)Host;
     var annotationCodeGenerator = services.GetRequiredService<IAnnotationCodeGenerator>();
     var code = services.GetRequiredService<ICSharpHelper>();
-
-    var usings = new List<string>
-    {
-        "System",
-        "System.Collections.Generic"
-    };
-
-    if (Options.UseDataAnnotations)
-    {
-        usings.Add("System.ComponentModel.DataAnnotations");
-        usings.Add("System.ComponentModel.DataAnnotations.Schema");
-        usings.Add("Microsoft.EntityFrameworkCore");
-    }
 
     if (!string.IsNullOrEmpty(NamespaceHint))
     {

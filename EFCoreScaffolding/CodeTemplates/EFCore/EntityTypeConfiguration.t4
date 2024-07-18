@@ -14,6 +14,7 @@
 <#@ import namespace="Microsoft.EntityFrameworkCore.Design" #>
 <#@ import namespace="Microsoft.Extensions.DependencyInjection" #>
 <#@ include file="T4Helper.t4" #>
+<#@ include file="EntityTypeConfigurationHelper.t4" #>
 <#
 
     var bWantConfigProperty =  RequireConfigPropertyList.Any(p => EntityType.FindProperty(p) != null);
@@ -27,9 +28,6 @@
 
 
 #>
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using <#= NamespaceHint #>;
 
 namespace <#= NamespaceHint #>;
 
@@ -47,3 +45,18 @@ public partial class <#= EntityType.Name #>Configuration : IEntityTypeConfigurat
     }
 }
 
+<#
+    var previousOutput = GenerationEnvironment;
+    GenerationEnvironment = new StringBuilder();
+
+    foreach (var ns in usings.Distinct().OrderBy(x => x, new NamespaceComparer()))
+    {
+#>
+using <#= ns #>;
+<#
+    }
+
+    WriteLine("");
+
+    GenerationEnvironment.Append(previousOutput);
+#>
