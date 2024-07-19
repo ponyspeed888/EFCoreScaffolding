@@ -71,26 +71,6 @@ But this create 2 problems :
 
 
 
-It has the following changes :
-
-* Add debug support, so that you can debug using Debugger.Launch
-* Allow you to specify which entity want to use EntityTypeConfiguration file
-* MVVM toolkit support
-* Provide the plumbing to better compile time error check
-* Generate dynamic properties per entity, using EF Core 8 Json column or dictionary (To be added)
-* 
-
-When you install this template with 
-
-   dotnet new ponyspeed888-eftemplates
-
-It will be mostly the same as Microsoft.EntityFrameworkCore.Templates
-
-To Generate mvvm tool style property use
-
-   dotnet new ponyspeed888-eftemplates --TemplateType mvvm --force
-
-
 
 
 To specify which entity to generate config file look for this line
