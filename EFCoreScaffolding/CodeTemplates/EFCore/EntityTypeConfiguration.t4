@@ -41,7 +41,7 @@ public partial class <#= EntityType.Name #>Configuration : IEntityTypeConfigurat
 <#  
         var bUseJsonColumn = false ;
 
-        if ( RequireConfigPropertyList.Any(p => p == StaticExtPropName) )
+        if ( EntityType.FindProperty(StaticExtPropName) != null) 
             bUseJsonColumn = true ;
         
         if ( bUseJsonColumn )
