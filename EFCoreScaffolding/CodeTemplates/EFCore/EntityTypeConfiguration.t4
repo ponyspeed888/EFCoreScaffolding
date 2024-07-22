@@ -38,12 +38,53 @@ public partial class <#= EntityType.Name #>Configuration : IEntityTypeConfigurat
 
     public void Configure(EntityTypeBuilder<<#= EntityType.Name #>> builder)
     {
+<#  
+        var bUseJsonColumn = false ;
+
+        if ( RequireConfigPropertyList.Any(p => p == StaticExtPropName) )
+            bUseJsonColumn = true ;
+        
+        if ( bUseJsonColumn )
+        {
+
+#>
+        builder.OwnsOne(x => x.<#= StaticExtPropName #>, cb =>
+        {
+            
+            cb.ToJson();
+            
+        });
+<#      } #>
 
         MoreBuilderCalls (builder) ;
 
 
     }
 }
+
+
+
+
+<#
+        if ( bUseJsonColumn )
+        {
+#>
+
+public partial class <#= EntityType.Name #>
+{
+
+    public <#= EntityType.Name #>ExtProp? ExtProp { get; set; }
+    public string? ExtPropAsString { get { if (ExtProp != null) return System.Text.Json.JsonSerializer.Serialize (ExtProp)  ;  else return null; }  }
+
+}
+
+public partial class <#= EntityType.Name #>ExtProp
+{
+
+}
+
+<#      } #>
+
 
 <#
     var previousOutput = GenerationEnvironment;

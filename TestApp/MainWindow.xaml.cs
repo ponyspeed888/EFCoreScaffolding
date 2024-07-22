@@ -20,9 +20,11 @@ namespace TestApp
         {
             InitializeComponent();
 
-            //ModelsNorthWind.NorthwindContext context = new ModelsNorthWind.NorthwindContext();
-            //var y = context.Customers.Take(3).ToList();
-            //MessageBox.Show ($"First few customers {y.Count}");
+            ModelsNorthWind.NorthwindContext context = new ModelsNorthWind.NorthwindContext();
+            var y = context.Customers.Take(3).ToList();
+            MessageBox.Show($"First few customers {y.Count}");
+            MessageBox.Show(y.First().ExtProp.NickName);
+
 
         }
     }
