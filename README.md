@@ -2,7 +2,7 @@ This project is a drop in replacement of Microsoft.EntityFrameworkCore.Templates
 
 It contains multiple branches.
 
-How to use :
+## How to use :
 
 For all branches except xxx :
 
@@ -13,7 +13,7 @@ For all branches except xxx :
 
 
 
-The main branch :
+## The main branch :
 
 This branch is basic the same as Microsoft's version, with the following changes
 
@@ -26,7 +26,7 @@ This branch is basic the same as Microsoft's version, with the following changes
 
 
 
-BETTER TEMPLATE ERROR DETECTION AT COMPILE TIME
+## BETTER TEMPLATE ERROR DETECTION AT COMPILE TIME
 
 The standard reverse engineering only use the t4 template as unstructured text.  It often return an error message that is meaningless. For example, this code block
 
@@ -58,26 +58,18 @@ But this create 2 problems :
 
 
 
+## The UseEntityConfig Branch
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-To specify which entity to generate config file look for this line
+To specify which entity to generate config file look for this line in T4Helper.t4
 
     string [] UseConfigure = new string [] { "Order", "OrderDetail"} ;
 
 and fill with the entity names you want to generate config file.  The generate config file is like :
+
+
+The generated EntityConfiguration is like :
 
 
 public partial class OrderConfiguration : IEntityTypeConfiguration<Order>
@@ -100,3 +92,16 @@ So just implement the partial method MoreBuilderCalls in another manually create
 
 
 
+## The JsonColumn Branch
+The branch will generate a ef core 8 json column implementation.
+
+How to use.
+* Create a column with type string (nvarchar) and update StaticExtPropName to the column name in  t4helper.t4
+  to 
+    string StaticExtPropName = "YourProp" ;
+
+    string [] RequireConfigPropertyList = new string [] { StaticExtPropName, DynamicExtPropName } ;
+
+* Create a class called CustomYourProp, fill it with the properties you want
+
+And then you can use the json column
