@@ -1,24 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace TestApp.ModelsNorthWind;
+#nullable enable
 
-[Keyless]
+namespace Database8.ModelsNorthWind;
 
 
 
-public partial class SalesTotalsByAmount : object
+public partial class SalesTotalsByAmount
+#if MVVM
+                : ObservableValidator
+#else
+#endif
 {
+#if MVVM
+    [ObservableProperty]
+    private byte[]? _SaleAmount ; 
+#else
     public byte[]? SaleAmount { get; set; }
+#endif
 
-    [Column("OrderID")]
+#if MVVM
+    [ObservableProperty]
+    private int? _OrderId ; 
+#else
     public int? OrderId { get; set; }
+#endif
 
+#if MVVM
+    [ObservableProperty]
+    private string? _CompanyName ; 
+#else
     public string? CompanyName { get; set; }
+#endif
 
-    [Column(TypeName = "DATETIME")]
+#if MVVM
+    [ObservableProperty]
+    private DateTime? _ShippedDate ; 
+#else
     public DateTime? ShippedDate { get; set; }
+#endif
 }
+
+
+

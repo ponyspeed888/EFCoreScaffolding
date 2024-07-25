@@ -1,19 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace TestApp.ModelsNorthWind;
+#nullable enable
 
-[Keyless]
+namespace Database8.ModelsNorthWind;
 
 
 
-public partial class CurrentProductList : object
+public partial class CurrentProductList
+#if MVVM
+                : ObservableValidator
+#else
+#endif
 {
-    [Column("ProductID")]
+#if MVVM
+    [ObservableProperty]
+    private int? _ProductId ; 
+#else
     public int? ProductId { get; set; }
+#endif
 
+#if MVVM
+    [ObservableProperty]
+    private string? _ProductName ; 
+#else
     public string? ProductName { get; set; }
+#endif
 }
+
+
+

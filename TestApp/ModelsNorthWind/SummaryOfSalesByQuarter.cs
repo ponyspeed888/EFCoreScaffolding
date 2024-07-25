@@ -1,22 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace TestApp.ModelsNorthWind;
+#nullable enable
 
-[Keyless]
+namespace Database8.ModelsNorthWind;
 
 
 
-public partial class SummaryOfSalesByQuarter : object
+public partial class SummaryOfSalesByQuarter
+#if MVVM
+                : ObservableValidator
+#else
+#endif
 {
-    [Column(TypeName = "DATETIME")]
+#if MVVM
+    [ObservableProperty]
+    private DateTime? _ShippedDate ; 
+#else
     public DateTime? ShippedDate { get; set; }
+#endif
 
-    [Column("OrderID")]
+#if MVVM
+    [ObservableProperty]
+    private int? _OrderId ; 
+#else
     public int? OrderId { get; set; }
+#endif
 
+#if MVVM
+    [ObservableProperty]
+    private double? _Subtotal ; 
+#else
     public double? Subtotal { get; set; }
+#endif
 }
+
+
+

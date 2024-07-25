@@ -1,65 +1,132 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace TestApp.ModelsNorthWind;
+#nullable enable
+
+namespace Database8.ModelsNorthWind;
 
 
 
-[EntityTypeConfiguration(typeof(OrderConfiguration))]
-
-public partial class Order : object
+public partial class Order
+#if MVVM
+                : ObservableValidator
+#else
+#endif
 {
-    [Key]
-    [Column("OrderID")]
+#if MVVM
+    [ObservableProperty]
+    private int _OrderId ; 
+#else
     public int OrderId { get; set; }
+#endif
 
-    [Column("CustomerID")]
+#if MVVM
+    [ObservableProperty]
+    private string? _CustomerId ; 
+#else
     public string? CustomerId { get; set; }
+#endif
 
-    [Column("EmployeeID")]
+#if MVVM
+    [ObservableProperty]
+    private int? _EmployeeId ; 
+#else
     public int? EmployeeId { get; set; }
+#endif
 
-    [Column(TypeName = "DATETIME")]
+#if MVVM
+    [ObservableProperty]
+    private DateTime? _OrderDate ; 
+#else
     public DateTime? OrderDate { get; set; }
+#endif
 
-    [Column(TypeName = "DATETIME")]
+#if MVVM
+    [ObservableProperty]
+    private DateTime? _RequiredDate ; 
+#else
     public DateTime? RequiredDate { get; set; }
+#endif
 
-    [Column(TypeName = "DATETIME")]
+#if MVVM
+    [ObservableProperty]
+    private DateTime? _ShippedDate ; 
+#else
     public DateTime? ShippedDate { get; set; }
+#endif
 
+#if MVVM
+    [ObservableProperty]
+    private int? _ShipVia ; 
+#else
     public int? ShipVia { get; set; }
+#endif
 
-    [Column(TypeName = "NUMERIC")]
+#if MVVM
+    [ObservableProperty]
+    private int? _Freight ; 
+#else
     public int? Freight { get; set; }
+#endif
 
+#if MVVM
+    [ObservableProperty]
+    private string? _ShipName ; 
+#else
     public string? ShipName { get; set; }
+#endif
 
+#if MVVM
+    [ObservableProperty]
+    private string? _ShipAddress ; 
+#else
     public string? ShipAddress { get; set; }
+#endif
 
+#if MVVM
+    [ObservableProperty]
+    private string? _ShipCity ; 
+#else
     public string? ShipCity { get; set; }
+#endif
 
+#if MVVM
+    [ObservableProperty]
+    private string? _ShipRegion ; 
+#else
     public string? ShipRegion { get; set; }
+#endif
 
+#if MVVM
+    [ObservableProperty]
+    private string? _ShipPostalCode ; 
+#else
     public string? ShipPostalCode { get; set; }
+#endif
 
+#if MVVM
+    [ObservableProperty]
+    private string? _ShipCountry ; 
+#else
     public string? ShipCountry { get; set; }
+#endif
 
-    [ForeignKey("CustomerId")]
-    [InverseProperty("Orders")]
     public virtual Customer? Customer { get; set; }
 
-    [ForeignKey("EmployeeId")]
-    [InverseProperty("Orders")]
     public virtual Employee? Employee { get; set; }
 
-    [InverseProperty("Order")]
+#if MVVM
+    public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new ObservableCollection<OrderDetail>();
+#else
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
+#endif
 
-    [ForeignKey("ShipVia")]
-    [InverseProperty("Orders")]
+
     public virtual Shipper? ShipViaNavigation { get; set; }
 }
+
+
+

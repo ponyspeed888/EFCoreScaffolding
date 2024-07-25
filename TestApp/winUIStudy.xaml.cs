@@ -12,7 +12,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using TestApp.ModelsNorthWind;
+//using TestApp.ModelsNorthWind;
+using Database8.ModelsNorthWind;
+
 
 namespace TestApp
 {
@@ -22,7 +24,7 @@ namespace TestApp
     public partial class winUIStudy : Window
     {
 
-        ModelsNorthWind.NorthwindContext context = new ModelsNorthWind.NorthwindContext();
+        NorthwindContext context = new NorthwindContext();
 
         public Order firstOrder { get; set; }
         public string firstOrder1 { get; set; } = "abc";
@@ -37,7 +39,7 @@ namespace TestApp
 
         public void Refresh()
         {
-            context = new ModelsNorthWind.NorthwindContext();
+            context = new NorthwindContext();
 
             var ds = context.Orders.Take(10).ToList();
             //ds.ToOb
@@ -62,7 +64,7 @@ namespace TestApp
         {
             // Delete not synced
 
-            context = new ModelsNorthWind.NorthwindContext();
+            context = new NorthwindContext();
             var ds = context.Orders.Take(10).ToList();
             grd1.ItemsSource = context.Orders.Local.ToList();
             //grd2.ItemsSource = context.Orders.Local.ToList();
@@ -75,7 +77,7 @@ namespace TestApp
         public void Refresh2()
         {
             // Delete synced
-            context = new ModelsNorthWind.NorthwindContext();
+            context = new NorthwindContext();
             var ds = context.Orders.Take(10).ToList();
             grd1.ItemsSource = ds;
             //grd2.ItemsSource = ds;
@@ -89,7 +91,7 @@ namespace TestApp
         public void Refresh3()
         {
             // Delete not synced
-            context = new ModelsNorthWind.NorthwindContext();
+            context = new NorthwindContext();
             var ds1 = context.Orders.Take(10).ToList();
             var ds2 = context.Orders.Take(10).ToList();
             grd1.ItemsSource = ds1;

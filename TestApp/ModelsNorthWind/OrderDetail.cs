@@ -1,39 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace TestApp.ModelsNorthWind;
+#nullable enable
 
-[PrimaryKey("OrderId", "ProductId")]
-[Table("Order Details")]
+namespace Database8.ModelsNorthWind;
 
 
-[EntityTypeConfiguration(typeof(OrderDetailConfiguration))]
 
-public partial class OrderDetail : object
+public partial class OrderDetail
+#if MVVM
+                : ObservableValidator
+#else
+#endif
 {
-    [Key]
-    [Column("OrderID")]
+#if MVVM
+    [ObservableProperty]
+    private int _OrderId ; 
+#else
     public int OrderId { get; set; }
+#endif
 
-    [Key]
-    [Column("ProductID")]
+#if MVVM
+    [ObservableProperty]
+    private int _ProductId ; 
+#else
     public int ProductId { get; set; }
+#endif
 
-    [Column(TypeName = "NUMERIC")]
+#if MVVM
+    [ObservableProperty]
+    private double _UnitPrice ; 
+#else
     public double UnitPrice { get; set; }
+#endif
 
+#if MVVM
+    [ObservableProperty]
+    private int _Quantity ; 
+#else
     public int Quantity { get; set; }
+#endif
 
+#if MVVM
+    [ObservableProperty]
+    private double _Discount ; 
+#else
     public double Discount { get; set; }
+#endif
 
-    [ForeignKey("OrderId")]
-    [InverseProperty("OrderDetails")]
     public virtual Order Order { get; set; } = null!;
 
-    [ForeignKey("ProductId")]
-    [InverseProperty("OrderDetails")]
     public virtual Product Product { get; set; } = null!;
 }
+
+
+

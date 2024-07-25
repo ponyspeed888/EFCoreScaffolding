@@ -1,30 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace TestApp.ModelsNorthWind;
+#nullable enable
+
+namespace Database8.ModelsNorthWind;
 
 
 
-
-public partial class Territory : object
+public partial class Territory
+#if MVVM
+                : ObservableValidator
+#else
+#endif
 {
-    [Key]
-    [Column("TerritoryID")]
+#if MVVM
+    [ObservableProperty]
+    private string _TerritoryId  = null!; 
+#else
     public string TerritoryId { get; set; } = null!;
+#endif
 
+#if MVVM
+    [ObservableProperty]
+    private string _TerritoryDescription  = null!; 
+#else
     public string TerritoryDescription { get; set; } = null!;
+#endif
 
-    [Column("RegionID")]
+#if MVVM
+    [ObservableProperty]
+    private int _RegionId ; 
+#else
     public int RegionId { get; set; }
+#endif
 
-    [ForeignKey("RegionId")]
-    [InverseProperty("Territories")]
     public virtual Region Region { get; set; } = null!;
 
-    [ForeignKey("TerritoryId")]
-    [InverseProperty("Territories")]
     public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
 }
+
+
+

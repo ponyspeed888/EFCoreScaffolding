@@ -1,31 +1,56 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace TestApp.ModelsNorthWind;
+#nullable enable
 
-[Table("ExtPropDef")]
-[Index("TableName", "KeyName", Name = "UniqueTableNameKeyName", IsUnique = true)]
-
+namespace Database8.ModelsNorthWind;
 
 
-public partial class ExtPropDef : object
+
+public partial class ExtPropDef
+#if MVVM
+                : ObservableValidator
+#else
+#endif
 {
-    [Key]
-    [Column("ExtPropDictID")]
+#if MVVM
+    [ObservableProperty]
+    private int _ExtPropDictId ; 
+#else
     public int ExtPropDictId { get; set; }
+#endif
 
-    [Column(TypeName = "NVARCHAR(128)")]
+#if MVVM
+    [ObservableProperty]
+    private string _TableName  = null!; 
+#else
     public string TableName { get; set; } = null!;
+#endif
 
-    [Column(TypeName = "NVARCHAR(128)")]
+#if MVVM
+    [ObservableProperty]
+    private string _KeyName  = null!; 
+#else
     public string KeyName { get; set; } = null!;
+#endif
 
-    [Column(TypeName = "NVARCHAR(128)")]
+#if MVVM
+    [ObservableProperty]
+    private string? _Category ; 
+#else
     public string? Category { get; set; }
+#endif
 
-    [Column(TypeName = "NVARCHAR(128)")]
+#if MVVM
+    [ObservableProperty]
+    private string? _DataType ; 
+#else
     public string? DataType { get; set; }
+#endif
 }
+
+
+
