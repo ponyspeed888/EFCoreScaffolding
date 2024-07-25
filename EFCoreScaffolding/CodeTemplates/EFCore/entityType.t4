@@ -134,7 +134,7 @@ public partial class <#= EntityType.Name #> : <#= EntityBaseClass  #>
         if (navigation.IsCollection)
         {
 #>
-    public virtual ICollection<<#= targetType #>> <#= navigation.Name #> { get; set; } = new List<<#= targetType #>>();
+    public virtual ICollection<<#= targetType #>> <#= navigation.Name #> { get; set; } = new <#=CollectionBaseClass#><<#= targetType #>>();
 <#
         }
         else
@@ -161,7 +161,7 @@ public partial class <#= EntityType.Name #> : <#= EntityBaseClass  #>
             }
         }
 #>
-    public virtual ICollection<<#= skipNavigation.TargetEntityType.Name #>> <#= skipNavigation.Name #> { get; set; } = new List<<#= skipNavigation.TargetEntityType.Name #>>();
+    public virtual ICollection<<#= skipNavigation.TargetEntityType.Name #>> <#= skipNavigation.Name #> { get; set; } = new <#=CollectionBaseClass#><<#= skipNavigation.TargetEntityType.Name #>>();
 <#
     }
 #>
