@@ -32,7 +32,9 @@
     if (bMvvm) 
     {
         usings.Add("CommunityToolkit.Mvvm.ComponentModel");
+        usings.Add("System.Collections.ObjectModel");
         EntityBaseClass = MvvmEntityBaseClass ;
+        CollectionBaseClass = MvvmCollectionBaseClass ;
 
     }
 
