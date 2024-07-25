@@ -13,6 +13,30 @@
     }
 
     var EntityBaseClass = "object" ;
+    var CollectionBaseClass = "List" ;
+
+    /* mvvm section start */
+
+    var bMvvm = true ;
+    var MvvmEntityBaseClass = "ObservableValidator" ;
+    var MvvmCollectionBaseClass = "ObservableCollection" ;
+
+    string ToMvvmAttr ( string strAttr ) 
+    {
+        if ( bMvvm )
+            return strAttr.Replace ("[", "[property:") ;
+        else
+            return strAttr ;
+    }
+
+    if (bMvvm) 
+    {
+        usings.Add("CommunityToolkit.Mvvm.ComponentModel");
+        EntityBaseClass = MvvmEntityBaseClass ;
+
+    }
+
+    /* mvvm section end */
 
 
 #>

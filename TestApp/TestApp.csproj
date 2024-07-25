@@ -20,5 +20,55 @@
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 
 	</ItemGroup>
-	
+
+
+
+
+
+	<ItemGroup>
+		<None Update="CodeTemplates\EFCore\DbContext.t4">
+			<Generator>TextTemplatingFilePreProcessor</Generator>
+			<LastGenOutput>DbContext.cs</LastGenOutput>
+		</None>
+		<None Update="CodeTemplates\EFCore\entityType.t4">
+			<Generator>TextTemplatingFilePreProcessor</Generator>
+			<LastGenOutput>entityType.cs</LastGenOutput>
+		</None>
+		<None Update="CodeTemplates\EFCore\T4Helper.t4">
+			<LastGenOutput>t4Helper.cs</LastGenOutput>
+			<Generator>TextTemplatingFilePreProcessor</Generator>
+		</None>
+		<None Update="CodeTemplates\EFCore\EntityTypeConfiguration.t4">
+			<Generator>TextTemplatingFilePreProcessor</Generator>
+			<LastGenOutput>EntityTypeConfiguration.cs</LastGenOutput>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="CodeTemplates\EFCore\DbContext.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>DbContext.t4</DependentUpon>
+		</Compile>
+		<Compile Update="CodeTemplates\EFCore\entityType.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>entityType.t4</DependentUpon>
+		</Compile>
+		<Compile Update="CodeTemplates\EFCore\t4Helper.cs">
+			<DependentUpon>T4Helper.t4</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+		</Compile>
+		<Compile Update="CodeTemplates\EFCore\EntityTypeConfiguration.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>EntityTypeConfiguration.t4</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
 </Project>
