@@ -1,0 +1,62 @@
+<#@ template hostSpecific="true" debug="true" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore.Design" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore.Relational" #>
+<#@ assembly name="Microsoft.Extensions.DependencyInjection.Abstractions" #>
+<#@ parameter name="EntityType" type="Microsoft.EntityFrameworkCore.Metadata.IEntityType" #>
+<#@ parameter name="Options" type="Microsoft.EntityFrameworkCore.Scaffolding.ModelCodeGenerationOptions" #>
+<#@ parameter name="NamespaceHint" type="System.String" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.ComponentModel.DataAnnotations" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore.Design" #>
+<#@ import namespace="Microsoft.Extensions.DependencyInjection" #>
+<#@ include file="T4Helper.t4" #>
+<#@ include file="EntityTypeConfigurationHelper.t4" #>
+<#
+
+    var bWantConfigProperty =  RequireConfigPropertyList.Any(p => EntityType.FindProperty(p) != null);
+    var bWantConfigEntity =  RequireConfigEntityList.Any(p => p == EntityType.Name);;
+    if ( bWantConfigProperty || bWantConfigEntity) 
+        ;
+    else
+        return "" ;
+
+
+
+
+#>
+
+namespace <#= NamespaceHint #>;
+
+public partial class <#= EntityType.Name #>Configuration : IEntityTypeConfiguration<<#= EntityType.Name #>>
+{
+    partial void MoreBuilderCalls (EntityTypeBuilder<<#= EntityType.Name #>> builder);
+
+
+    public void Configure(EntityTypeBuilder<<#= EntityType.Name #>> builder)
+    {
+
+        MoreBuilderCalls (builder) ;
+
+
+    }
+}
+
+<#
+    var previousOutput = GenerationEnvironment;
+    GenerationEnvironment = new StringBuilder();
+
+    foreach (var ns in usings.Distinct().OrderBy(x => x, new NamespaceComparer()))
+    {
+#>
+using <#= ns #>;
+<#
+    }
+
+    WriteLine("");
+
+    GenerationEnvironment.Append(previousOutput);
+#>

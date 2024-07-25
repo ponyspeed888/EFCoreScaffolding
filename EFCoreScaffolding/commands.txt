@@ -13,3 +13,10 @@ dotnet new ponyspeed888-eftemplates --TemplateType mvvm --force
 
 
 dotnet ef dbcontext scaffold -o ModelsNorthWind --startup-project TestApp --project TestApp  "datasource=d:\MyDoc\DatabaseLatest\northwind.db" Microsoft.EntityFrameworkCore.Sqlite --force --no-build --data-annotations
+
+dotnet ef dbcontext scaffold -o ModelsNorthWind --startup-project TestApp --project WpfApp461  "datasource=d:\MyDoc\DatabaseLatest\northwind.db" Microsoft.EntityFrameworkCore.Sqlite --force --no-build --data-annotations
+
+dotnet ef dbcontext scaffold -o ModelsNorthWind --startup-project std20 --project std20  "datasource=d:\MyDoc\DatabaseLatest\northwind.db" Microsoft.EntityFrameworkCore.Sqlite --force --no-build --data-annotations
+
+
+dotnet ef dbcontext scaffold -o ModelsNorthWind --startup-project TestApp --project std20  "datasource=d:\MyDoc\DatabaseLatest\northwind.db" Microsoft.EntityFrameworkCore.Sqlite --force --no-build --data-annotations
