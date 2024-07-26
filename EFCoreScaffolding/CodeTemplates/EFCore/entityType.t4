@@ -95,8 +95,6 @@ public partial class <#= EntityType.Name #> : <#= EntityBaseClass  #>
             {
 #>
     <#= ToMvvmAttr (code.Fragment(dataAnnotation) )  #>
-
-    <#= code.Fragment(dataAnnotation) #>
 <#
             }
         }
@@ -105,13 +103,14 @@ public partial class <#= EntityType.Name #> : <#= EntityBaseClass  #>
 
         var needsNullable = Options.UseNullableReferenceTypes && property.IsNullable && !property.ClrType.IsValueType;
         var needsInitializer = Options.UseNullableReferenceTypes && !property.IsNullable && !property.ClrType.IsValueType;
+        if ( bMvvm)
+        {
 #>
-#if MVVM
     [ObservableProperty]
     private <#= code.Reference(property.ClrType) #><#= needsNullable ? "?" : "" #> _<#= property.Name #> <#= needsInitializer ? " = null!;" : ";" #> 
-#else
+<# } else { #>
     public <#= code.Reference(property.ClrType) #><#= needsNullable ? "?" : "" #> <#= property.Name #> { get; set; }<#= needsInitializer ? " = null!;" : "" #>
-#endif
+<#  } #>
 <#
         firstProperty = false;
     }
