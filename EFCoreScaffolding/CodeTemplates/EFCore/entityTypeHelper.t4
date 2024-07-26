@@ -17,7 +17,6 @@
 
     /* mvvm section start */
 
-    var bMvvm = true ;
     var MvvmEntityBaseClass = "ObservableValidator" ;
     var MvvmCollectionBaseClass = "ObservableCollection" ;
 

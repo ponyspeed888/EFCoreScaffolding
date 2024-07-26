@@ -20,5 +20,6 @@
     string [] RequireConfigPropertyList = new string [] { StaticExtPropName, DynamicExtPropName } ;
     string [] RequireConfigEntityList = new string [] { "Order", "OrderDetail" } ;
 
+    var bMvvm = true ;
 
 #>

@@ -73,7 +73,12 @@ public partial class <#= EntityType.Name #>Configuration : IEntityTypeConfigurat
 public partial class <#= EntityType.Name #>
 {
 
+<# if (bMvvm) { #>
+    [ObservableProperty]
+    private <#= EntityType.Name #>ExtProp? _ExtProp;
+<# } else { #>
     public <#= EntityType.Name #>ExtProp? ExtProp { get; set; }
+<# } #>
     public string? ExtPropAsString { get { if (ExtProp != null) return System.Text.Json.JsonSerializer.Serialize (ExtProp)  ;  else return null; }  }
 
 }

@@ -13,6 +13,11 @@
         usings.Add("Microsoft.EntityFrameworkCore");
         usings.Add("Microsoft.EntityFrameworkCore.Metadata.Builders");
     }
+  
+    if (bMvvm) 
+    {
+        usings.Add("CommunityToolkit.Mvvm.ComponentModel");
 
+    }
 
 #>
