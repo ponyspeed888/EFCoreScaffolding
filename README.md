@@ -1,4 +1,7 @@
-This project is a drop in replacement of Microsoft.EntityFrameworkCore.Templates.
+# This project is a drop in replacement of Microsoft.EntityFrameworkCore.Templates. 
+
+Unlike my other repository EFTemplate, which combined all the various variations into a single code base.  This repostitory refactor the code into multiple branches, which make it easier to use and modify
+
 
 It contains multiple branches.
 
@@ -105,3 +108,13 @@ How to use.
 * Create a class called CustomYourProp, fill it with the properties you want
 
 And then you can use the json column
+
+
+
+## The mvvm Branch
+
+This branch generate property that use mvvmtoolkit
+
+## The mvvmWithJsonColumn Branch
+
+The branch combine mvvm and JsonColumn
