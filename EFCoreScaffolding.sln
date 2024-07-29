@@ -8,9 +8,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{F2FD5300-7908-4870-8F77-7E7FE296661F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{39EC518E-8F43-4C4D-953E-548ECC1DB259}"
-	ProjectSection(SolutionItems) = preProject
-		README.md = README.md
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp461", "WpfApp461\WpfApp461.csproj", "{518DA1B5-1F61-4A1E-8113-74E0C6D36101}"
 EndProject
